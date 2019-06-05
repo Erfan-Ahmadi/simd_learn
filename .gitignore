@@ -8,3 +8,10 @@
 *.opendb
 *.user
 *.filters
+*.tlog
+*.idb
+*.log
+*.obj
+*.pdb
+*.ilk
+*.exe
