@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simd_simple", "simd_simple\simd_simple.vcxproj", "{733EF598-0ADD-4A49-8F31-B3FC7C71EE1F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "collision_detection_simd", "collision_detection_simd\collision_detection_simd.vcxproj", "{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{733EF598-0ADD-4A49-8F31-B3FC7C71EE1F}.Release|x64.Build.0 = Release|x64
 		{733EF598-0ADD-4A49-8F31-B3FC7C71EE1F}.Release|x86.ActiveCfg = Release|Win32
 		{733EF598-0ADD-4A49-8F31-B3FC7C71EE1F}.Release|x86.Build.0 = Release|Win32
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Debug|x64.ActiveCfg = Debug|x64
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Debug|x64.Build.0 = Debug|x64
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Debug|x86.ActiveCfg = Debug|Win32
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Debug|x86.Build.0 = Debug|Win32
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Release|x64.ActiveCfg = Release|x64
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Release|x64.Build.0 = Release|x64
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Release|x86.ActiveCfg = Release|Win32
+		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
