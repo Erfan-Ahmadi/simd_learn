@@ -1,6 +1,7 @@
 #include <iostream>
 #include <immintrin.h>
 #include <vector>
+#include <time.h>
 
 constexpr size_t instance_count = 1 << 3;
 constexpr size_t cols_count = 16;
@@ -32,6 +33,7 @@ static std::vector<size> cols;
 
 inline void initialize_data()
 {
+	srand(time(NULL));
 	circles.resize(instance_count);
 	cols.resize(cols_count * 2);
 
@@ -39,8 +41,8 @@ inline void initialize_data()
 	{
 		circles.positions[i] =
 		{
-			static_cast<float>(i + 10),
-			static_cast<float>(i * 3)
+			static_cast<float>(rand() % 8),
+			static_cast<float>(rand() % 8)
 		};
 
 		circles.velocities[i] =
@@ -49,7 +51,7 @@ inline void initialize_data()
 			i * 2.0f
 		};
 
-		circles.scales[i] = 10;
+		circles.scales[i] = 5;
 	}
 
 	for (size_t i = 0; i < cols_count * 2; i += 2)
@@ -135,8 +137,8 @@ int main()
 	// SIMD
 	const size_t twos = (instance_count * (instance_count - 1)) / 2;
 
-	size_t i = 0;
-	size_t j = 1;
+	size_t row = 0;
+	size_t column = 1;
 
 	const size_t left = (twos % 8);
 	const size_t n = twos - left;
@@ -147,8 +149,14 @@ int main()
 
 	for (size_t k = 0; k < twos; ++k)
 	{
+		checks[counter] = row;
+		checks[counter + 1] = column;
+		
+		counter += 2;
+
 		if (counter >= 16)
 		{
+			//std::cout << "COUNTER~" << std::endl;
 			counter = 0;
 
 			__m256i first_indexes = _mm256_i32gather_epi32(&checks[0], base, sizeof(size) * 2);
@@ -190,47 +198,40 @@ int main()
 			__m256 result = _mm256_cmp_ps(dis2, radii2, _CMP_GT_OQ);
 
 			float* resultf = reinterpret_cast<float*>(&result);
-			for(short m = 0; m < 8; ++m)
+			for (short m = 0; m < 8; ++m)
 			{
-				if(resultf[m] == 0)
+				if (resultf[m] == 0)
 				{
-					std::cout << "COLLIDED :" << checks[m * 2] << " and " << checks[m * 2 + 1] << std::endl; 
+					std::cout << "COLLIDED :" << checks[m * 2] << " and " << checks[m * 2 + 1] << std::endl;
 				}
 			}
 		}
 		else if (k >= twos - 1)
 		{
-			//checks[counter * 2] = i;
-			//checks[counter * 2 + 1] = j;
+			for (short m = 0; m < left; ++m)
+			{
+				const auto i = checks[m * 2];
+				const auto j = checks[m * 2 + 1];
+				const auto dx = circles.positions[i].x - circles.positions[j].x;
+				const auto dy = circles.positions[i].y - circles.positions[j].y;
+				const auto dis2 = (dy * dy + dx * dx);
+				const auto radii = circles.scales[i] + circles.scales[j];
+
+				if (dis2 <= radii * radii)
+				{
+					std::cout << "COLLIDED :" << checks[m * 2] << " and " << checks[m * 2 + 1] << std::endl;
+				}
+			}
 		}
 
-		checks[counter] = i;
-		checks[counter + 1] = j;
-
-		if (++j > instance_count - 1)
+		if (++column > instance_count - 1)
 		{
-			i++;
-			j = i + 1;
+			row++;
+			column = row + 1;
 		}
-
-		counter += 2;
 	}
 
 	free(checks);
-
-	//	 k		i	j
-	//----------------
-	//	 0		0	1
-	//	 1		0	2
-	//	 2		0	3
-	//	 3		0	4
-	//	 4		1	2
-	//	 5		1	3
-	//	 6		1	4
-	//	 7		2	3
-	//	 8		2	4
-	//	 9		3	4
-
 
 	// Sequential
 	for (size_t i = 0; i < instance_count; ++i)
