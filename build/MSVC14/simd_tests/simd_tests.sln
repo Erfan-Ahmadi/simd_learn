@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simd_simple", "simd_simple\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "collision_detection_simd", "collision_detection_simd\collision_detection_simd.vcxproj", "{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "array_sum", "array_sum\array_sum.vcxproj", "{90025AC8-9713-4198-9EC0-3A493F8CC70A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Release|x64.Build.0 = Release|x64
 		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Release|x86.ActiveCfg = Release|Win32
 		{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}.Release|x86.Build.0 = Release|Win32
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Debug|x64.ActiveCfg = Debug|x64
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Debug|x64.Build.0 = Debug|x64
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Debug|x86.ActiveCfg = Debug|Win32
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Debug|x86.Build.0 = Debug|Win32
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Release|x64.ActiveCfg = Release|x64
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Release|x64.Build.0 = Release|x64
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Release|x86.ActiveCfg = Release|Win32
+		{90025AC8-9713-4198-9EC0-3A493F8CC70A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

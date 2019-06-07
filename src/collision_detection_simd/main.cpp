@@ -41,8 +41,8 @@ inline void initialize_data()
 	{
 		circles.positions[i] =
 		{
-			static_cast<float>(rand() % 8),
-			static_cast<float>(rand() % 8)
+			static_cast<float>(rand() % 16),
+			static_cast<float>(rand() % 16)
 		};
 
 		circles.velocities[i] =
@@ -156,11 +156,12 @@ int main()
 
 		if (counter >= 16)
 		{
-			//std::cout << "COUNTER~" << std::endl;
 			counter = 0;
 
-			__m256i first_indexes = _mm256_i32gather_epi32(&checks[0], base, sizeof(size) * 2);
-			__m256i second_indexes = _mm256_i32gather_epi32(&checks[1], base, sizeof(size) * 2);
+			__m256i first_indexes	=		_mm256_i32gather_epi32(&checks[0], base, sizeof(size) * 2);
+			__m256i second_indexes	=		_mm256_i32gather_epi32(&checks[1], base, sizeof(size) * 2);
+
+			print_vec<__m256i, int>(first_indexes);
 
 			const __m256 first_x = _mm256_i32gather_ps(
 				reinterpret_cast<float*>(&circles.positions[0]),
