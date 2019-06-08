@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\simd_simple\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\common.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{733EF598-0ADD-4A49-8F31-B3FC7C71EE1F}</ProjectGuid>

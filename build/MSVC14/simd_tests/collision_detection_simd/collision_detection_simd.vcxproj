@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\src\collision_detection_simd\main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\src\common.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{3EBB9B8C-1F69-47BB-8228-D780FD2BEC9E}</ProjectGuid>

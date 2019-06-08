@@ -1,7 +1,6 @@
-#include <iostream>
-#include <immintrin.h>
 #include <vector>
 #include <time.h>
+#include "../common.hpp"
 
 constexpr size_t instance_count = 1 << 3;
 constexpr size_t cols_count = 16;
@@ -59,17 +58,6 @@ inline void initialize_data()
 		cols[i] = i % instance_count;
 		cols[i + 1] = (i + 1) % instance_count;
 	}
-}
-
-template <class V, class T>
-inline void print_vec(V& vec)
-{
-	T* vecf = reinterpret_cast<T*>(&vec);
-
-	for (short i = 0; i < 8; ++i)
-		std::cout << "(" << i << "): " << vecf[i] << std::endl;
-
-	std::cout << std::endl;
 }
 
 inline void handle_collision_simd()

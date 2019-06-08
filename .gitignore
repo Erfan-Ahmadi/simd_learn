@@ -15,3 +15,7 @@
 *.pdb
 *.ilk
 *.exe
+*.ipdb
+*.iobj
+*.db-shm
+*.db-wal

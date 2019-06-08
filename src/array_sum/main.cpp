@@ -1,8 +1,7 @@
-#include <iostream>
 #include <chrono>
 #include <time.h>
-#include <immintrin.h>
 #include <vector>
+#include "../common.hpp"
 
 constexpr size_t size = 1 << 20;
 constexpr size_t n = 50; // Run N-Times
@@ -47,8 +46,8 @@ int main()
 			__m256d first_vec = _mm256_load_pd(&first[i * 4]);
 			__m256d second_vec = _mm256_load_pd(&second[i * 4]);
 
-			volatile __m256d result = _mm256_sqrt_pd(_mm256_add_pd(_mm256_mul_pd(first_vec, first_vec), _mm256_mul_pd(second_vec, second_vec)));
-			//_mm256_store_pd(&out_simd[i * 4], result);
+			__m256d result = _mm256_sqrt_pd(_mm256_add_pd(_mm256_mul_pd(first_vec, first_vec), _mm256_mul_pd(second_vec, second_vec)));
+			_mm256_store_pd(&out_simd[i * 4], result);
 		}
 
 		const auto t3 = std::chrono::high_resolution_clock::now();
