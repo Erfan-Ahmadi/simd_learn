@@ -149,7 +149,7 @@ int main()
 			__m256i first_indexes	=		_mm256_i32gather_epi32(&checks[0], base, sizeof(size) * 2);
 			__m256i second_indexes	=		_mm256_i32gather_epi32(&checks[1], base, sizeof(size) * 2);
 
-			print_vec<__m256i, int>(first_indexes);
+			print_vec_128<__m256i, int>(first_indexes);
 
 			const __m256 first_x = _mm256_i32gather_ps(
 				reinterpret_cast<float*>(&circles.positions[0]),

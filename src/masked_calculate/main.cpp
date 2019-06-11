@@ -13,6 +13,8 @@ inline __m256 pack_left_256(const __m256& src, const unsigned int& mask)
 	__m128i bytevec = _mm_cvtsi64_si128(wanted_indices);
 	__m256i shufmask = _mm256_cvtepu8_epi32(bytevec);
 
+	print_vec_256<__m256i, uint32_t>(shufmask);
+
 	return _mm256_permutevar8x32_ps(src, shufmask);
 }
 
@@ -32,7 +34,7 @@ int main()
 
 	// Pack Left with Mask
 	__m256 packed = pack_left_256(first, mask);
-
+	
 	// Store Results
 	float results[8];
 	_mm256_store_ps(results, packed);
